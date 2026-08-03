@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPokemonList } from "../../api/pokemonAPI";
 import type { PokemonListItem } from "../../types/pokemonTypes";
+import { PokemonCard } from "../../components/PokemonCards/components/PokemonCard";
 
 export const HomePage = () => {
     const [pokemonList, setPokemonList] = useState<PokemonListItem[]>([]);
@@ -28,11 +29,7 @@ export const HomePage = () => {
             <h1>Домашняя страница</h1> 
             <div className="flex flex-col gap-5 justify-center">
                 {
-                    pokemonList.map((pokemon) => (
-                        <div key={pokemon.name}>
-                            <h4>{pokemon.name}</h4>
-                        </div>
-                    ))
+                    pokemonList.map((pokemon) => <PokemonCard key={pokemon.name} pokemon={pokemon} />)
                 }
             </div>   
         </div> 
