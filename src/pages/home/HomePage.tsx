@@ -26,11 +26,12 @@ export const HomePage = () => {
 
     return (
         <div>
-            <h1>Домашняя страница</h1> 
-            <div className="flex flex-col gap-5 justify-center">
-                {
-                    pokemonList.map((pokemon) => <PokemonCard key={pokemon.name} pokemon={pokemon} />)
-                }
+            <div 
+                className="flex flex-wrap gap-8 justify-center p-6"
+            >
+                    {
+                        pokemonList.map((pokemon) => <PokemonCard key={pokemon.name} pokemon={pokemon} />)
+                    }
             </div>   
         </div> 
     )

@@ -11,7 +11,9 @@ export const PokemonDetailPage = () => {
         if (!pokemonName) return;
 
         getPokemonByName(pokemonName)
-            .then((data) => setPokemon(data))
+            .then((data) => {
+                setPokemon(data);
+            })
             .catch((err) => console.log(err));
     }, [pokemonName]);
 
@@ -24,7 +26,7 @@ export const PokemonDetailPage = () => {
                 <img src={pokemon.sprites.front_default} alt={pokemon.name} />
             )}
             <ul>
-                {pokemon.types.map((item) => (
+                {pokemon.types?.map((item) => (
                     <li key={item.type.name}>{item.type.name}</li>
                 ))}
             </ul>
