@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { getPokemonList } from "../../api/pokemonAPI";
 import type { PokemonListItem } from "../../types/pokemonTypes";
 import { PokemonCard } from "../../components/PokemonCards/components/PokemonCard";
+import { Container } from "../../components/Container";
 
 export const HomePage = () => {
     const [pokemonList, setPokemonList] = useState<PokemonListItem[]>([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] =  useState(0);
-    const [limit] = useState(10);
+    const [limit] = useState(8);
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -32,14 +33,16 @@ export const HomePage = () => {
 
     return (
         <div>
-            <div 
-                className="flex flex-wrap gap-8 justify-center p-6"
-            >
-                    {
-                        pokemonList.map((pokemon) => <PokemonCard key={pokemon.name} pokemon={pokemon} />)
-                    }
-            </div> 
-            
+            <Container>
+                <div 
+                    className="flex flex-wrap gap-8 justify-center p-6"
+                >
+                        {
+                            pokemonList.map((pokemon) => <PokemonCard key={pokemon.name} pokemon={pokemon} />)
+                        }
+                </div> 
+            </Container>
+
             <div className="mt-4 flex gap-4 justify-center">
                 <button
                     onClick={() => setCurrentPage((prev) => Math.max(0, prev - 1))}
